@@ -3,7 +3,7 @@ const labels = require('./../models/coco_model/labels.json')
 const ColorHash = require('color-hash')
 const colorHash = new ColorHash()
 
-const MODEL_URL = '/models/coco_model/web_model/tensorflowjs_model.pb'
+const MODEL_URL = 'models/coco_model/web_model/tensorflowjs_model.pb'
 const WEIGHTS_URL = 'models/coco_model/web_model/weights_manifest.json'
 
 const THRESHOLD = 0.3
