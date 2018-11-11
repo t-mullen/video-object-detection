@@ -1,0 +1,27 @@
+{
+  "name": "video-object-detection",
+  "version": "1.0.0",
+  "description": "Realtime object detection on browser video.",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "standard --fix src/**",
+    "test": "npm run lint && npm run test-browser",
+    "build": "browserify src/index.js -s VideoObjectDetection -o dist/video-object-detection.js",
+    "watch": "watchify src/index.js -s VideoObjectDetection -o dist/video-object-detection.js",
+    "test-browser": "airtap --local -- test/*.js",
+    "convert-model": "tensorflowjs_converter --input_format=tf_frozen_model --output_node_names='num_detections,detection_classes,detection_boxes,detection_scores' --saved_model_tags=serve models/coco_model/frozen_inference_graph.pb models/coco_model/web_model"
+  },
+  "author": "Thomas Mullen",
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^8.6.0",
+    "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^0.13.1",
+    "color-hash": "^1.0.3"
+  }
+}
