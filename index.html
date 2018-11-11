@@ -38,8 +38,14 @@
     </body>
     <script src="dist/video-object-detection.js"></script>
     <script>
+        var getUserMedia = navigator.getUserMedia || 
+            navigator.mozGetUserMedia || 
+            navigator.webkitGetUserMedia;
+        
+        if (getUserMedia) getUserMedia = getUserMedia.bind(navigator);
+
         const inputVideo = document.querySelector('#input')
-        navigator.getUserMedia({ video: true, audio: false}, (stream) => {
+        getUserMedia({ video: true, audio: false}, (stream) => {
             inputVideo.srcObject = stream
             VideoObjectDetection({inputVideo})
             inputVideo.play()
